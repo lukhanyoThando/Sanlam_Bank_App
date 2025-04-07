@@ -6,7 +6,6 @@ DATABASE_URL = ""
 # Create SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
 
-# Create a session maker that will generate new Session objects
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Dependency to get a session
