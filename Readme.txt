@@ -1,8 +1,7 @@
 /*
  * 📄 **Documentation**:
  * This application, developed by **Lukanyo Nkohla**, allows users to withdraw money from their bank accounts. 
- * The business logic is implemented using a service layer that interacts with the database and communicates 
- * with **AWS SNS** to log each withdrawal event. 🚀
+ * The business logic is implemented using a service layer that interacts with the database and communicates with **AWS SNS** to log each withdrawal event. 🚀
 
 ---
 
