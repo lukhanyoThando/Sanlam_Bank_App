@@ -1,14 +1,15 @@
 from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
 from services.AccountService import BankAccountService
 from dto.Accountschema import WithdrawalRequest
 from repositories.AccountRepository import get_account_repository, AccountRepository
 from events.sns_publisher import publish_to_sns
 from exceptions.exceptions import InsufficientFundsException, WithdrawalFailedException
 
-# Create the router instance
+router = APIRouter()
+# Create the router instance without the prefix
 router = APIRouter(
-    prefix="/bank",
-    tags=["Bank Account"]
+    tags=["Bank Account"]  # You can still group routes with tags
 )
 
 # Dependency provider for BankAccountService
@@ -17,8 +18,7 @@ def get_bank_account_service(
 ):
     return BankAccountService(account_repo=account_repo, event_publisher=publish_to_sns)
 
-# This is the correct decorator to use inside controller files
-@router.post("/withdraw")
+@router.post("/withdraw", response_model=None)
 def withdraw(
     req: WithdrawalRequest,
     service: BankAccountService = Depends(get_bank_account_service)
@@ -30,5 +30,5 @@ def withdraw(
         raise HTTPException(status_code=400, detail="Insufficient funds")
     except WithdrawalFailedException:
         raise HTTPException(status_code=500, detail="Withdrawal failed due to an internal error")
-    except Exception:
-        raise HTTPException(status_code=500, detail="Unexpected error occurred")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error occurred: {str(e)}")
