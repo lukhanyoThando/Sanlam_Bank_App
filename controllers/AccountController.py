@@ -18,7 +18,7 @@ def get_bank_account_service(
 ):
     return BankAccountService(account_repo=account_repo, event_publisher=publish_to_sns)
 
-@router.post("/withdraw", response_model=None)
+@router.post("/bank/withdraw", response_model=None)
 def withdraw(
     req: WithdrawalRequest,
     service: BankAccountService = Depends(get_bank_account_service)
