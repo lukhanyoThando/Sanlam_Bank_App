@@ -6,8 +6,6 @@ from repositories.AccountRepository import get_account_repository, AccountReposi
 from events.sns_publisher import publish_to_sns
 from exceptions.exceptions import InsufficientFundsException, WithdrawalFailedException
 
-router = APIRouter()
-# Create the router instance without the prefix
 router = APIRouter(
     tags=["Bank Account"]  
 )
