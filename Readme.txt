@@ -17,6 +17,7 @@
 - **Service Layer**: Business logic is kept separate from the controller to maintain clean, reusable code. 🧹
 - **Repositories**: The repository pattern abstracts database queries from the rest of the application. 🗂️
 - **FastAPI**: Chosen for its speed, automatic validation with Pydantic, and native async support. ⚡
+- ** Database** : Chosen ORM to instead of writing SQL queries directly, making the code cleaner, more readable, and potentially easier to maintain.
 - **AWS SNS**: Decouples event publishing from the core logic, enabling better scaling and monitoring. 📈
 
 ---
@@ -55,7 +56,7 @@
 
 5. **Decimal**:
     - A Python library used for accurate financial calculations. 💰
-    - Preferred over floats to avoid rounding errors in financial computations.
+    - Preferred over floats to avoid rounding errors.
 
 ---
 
