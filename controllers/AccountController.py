@@ -9,7 +9,7 @@ from exceptions.exceptions import InsufficientFundsException, WithdrawalFailedEx
 router = APIRouter()
 # Create the router instance without the prefix
 router = APIRouter(
-    tags=["Bank Account"]  # You can still group routes with tags
+    tags=["Bank Account"]  
 )
 
 # Dependency provider for BankAccountService
