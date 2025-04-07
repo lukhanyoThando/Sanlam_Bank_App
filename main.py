@@ -1,8 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from controllers.AccountController import router as bank_router
 
 app = FastAPI()
 
+app.include_router(bank_router)
+
+@bank_router.get("/accounts")
+def get_accounts():
+    return {"message": "This would return a list of bank accounts."}
+
+# Include the router into the FastAPI app
 app.include_router(bank_router)
 
 @app.get("/")
