@@ -7,7 +7,7 @@ app.include_router(bank_router)
 
 @bank_router.get("/bank")
 def get_accounts():
-    return {"message": "This would return a list of bank accounts."}
+    return {"message": "return a list of bank accounts."}
 
 # Include the router into the FastAPI app
 app.include_router(bank_router)
